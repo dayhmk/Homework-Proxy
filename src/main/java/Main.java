@@ -21,7 +21,7 @@ public class Main extends HttpServlet {
 	@Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-		resp.addHeader("Access-Control-Allow-Origin", "*");
+		resp.addHeader("Access-Control-Allow-Origin", "dayhmk.github.io");
 		String URI = req.getRequestURI();
 		if(URI.charAt(0) == '/')
 			URI = URI.substring(1);
