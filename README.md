@@ -1,1 +1,1 @@
-This is a beta proxy for the homework website. This will be soon deployed on Heroku.
+This is the proxy for dayhmk.github.io. It only works for that site!
