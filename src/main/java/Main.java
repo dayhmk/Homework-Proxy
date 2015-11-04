@@ -1,46 +1,57 @@
-import static spark.Spark.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
-public class Main {
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-	public static void main(String[] args) {
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
 
-		port(Integer.valueOf(System.getenv("PORT")));
-		staticFileLocation("/public");
-		
-		get("/hello", (req, res) -> {
-			res.type("application/json"); 
-			return "Hello World";
-		});
+public class Main extends HttpServlet {
 
-		/*
-		 * get("/hello", (req, res) -> "Hello World");
-		 * 
-		 * get("/", (request, response) -> { Map<String, Object> attributes =
-		 * new HashMap<>(); attributes.put("message", "Hello World!");
-		 * 
-		 * return new ModelAndView(attributes, "index.ftl"); }, new
-		 * FreeMarkerEngine());
-		 * 
-		 * get("/db", (req, res) -> { Connection connection = null; Map<String,
-		 * Object> attributes = new HashMap<>(); try { connection =
-		 * DatabaseUrl.extract().getConnection();
-		 * 
-		 * Statement stmt = connection.createStatement(); stmt.executeUpdate(
-		 * "CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-		 * stmt.executeUpdate("INSERT INTO ticks VALUES (now())"); ResultSet rs
-		 * = stmt.executeQuery("SELECT tick FROM ticks");
-		 * 
-		 * ArrayList<String> output = new ArrayList<String>(); while (rs.next())
-		 * { output.add( "Read from DB: " + rs.getTimestamp("tick")); }
-		 * 
-		 * attributes.put("results", output); return new
-		 * ModelAndView(attributes, "db.ftl"); } catch (Exception e) {
-		 * attributes.put("message", "There was an error: " + e); return new
-		 * ModelAndView(attributes, "error.ftl"); } finally { if (connection !=
-		 * null) try{connection.close();} catch(SQLException e){} } }, new
-		 * FreeMarkerEngine());
-		 */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7490600326997334112L;
 
-	}
+	@Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+		resp.addHeader("Access-Control-Allow-Origin", "*");
+		String URI = req.getRequestURI();
+		if(URI.charAt(0) == '/')
+			URI = URI.substring(1);
+		String query = req.getQueryString();
+		if(query != null){
+			query = query.trim();
+			if(!query.equals("")){
+				URI = URI+"?"+query;
+			}
+		}
+        try{
+        	System.out.println(URI);
+        	URL remote = new URL(URI);
+        	InputStream in = remote.openStream();
+        	int n;
+        	while((n = in.read()) != -1){
+        		resp.getWriter().write(n);
+        	}
+        }catch(Exception ex){
+        	resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
+    }
 
+    public static void main(String[] args) throws Exception{
+        Server server = new Server(/*Integer.valueOf(System.getenv("PORT"))*/8080);
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        context.setContextPath("/");
+        server.setHandler(context);
+        context.addServlet(new ServletHolder(new Main()),"/*");
+        server.start();
+        server.join();   
+    }
 }
