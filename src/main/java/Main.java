@@ -33,7 +33,6 @@ public class Main extends HttpServlet {
 			}
 		}
         try{
-        	System.out.println(URI);
         	URL remote = new URL(URI);
         	InputStream in = remote.openStream();
         	int n;
