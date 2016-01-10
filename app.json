@@ -1,6 +1,5 @@
 {
   "name": "Day Homework Proxy",
   "description": "Day Homework Proxy",
-  "image": "heroku/java",
   "addons": [ "heroku-postgresql" ]
 }
