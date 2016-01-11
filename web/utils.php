@@ -27,7 +27,7 @@
 		$xmlDoc = new DOMDocument();
 		$xmlDoc->load($url);
 		$items=$xmlDoc->getElementsByTagName('channel')->item(0)->getElementsByTagName('item');
-		return $items->item(0)->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
+		return $items->item(0)->getElementsByTagName('encoded')->item(0)->childNodes->item(0)->nodeValue;
 	}
 	
 	// Grabs a blogspot feed
