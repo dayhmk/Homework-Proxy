@@ -23,11 +23,16 @@
 	}
 	
 	// Grabs a rss feed
-	function util_rss($url){
+	function util_rss($url, $filter){
 		$xmlDoc = new DOMDocument();
 		$xmlDoc->load($url);
 		$items=$xmlDoc->getElementsByTagName('channel')->item(0)->getElementsByTagName('item');
-		return $items->item(0)->getElementsByTagName('encoded')->item(0)->childNodes->item(0)->nodeValue;
+		foreach($items as $item){
+			if($filter == "" || stripos($item->getElementsByTagName('title')->item(0)->nodeValue, $filter) !== false){
+				return $item->getElementsByTagName('encoded')->item(0)->childNodes->item(0)->nodeValue;
+			}
+		}
+		return null;
 	}
 	
 	// Grabs a blogspot feed
