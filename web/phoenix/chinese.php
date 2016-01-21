@@ -1,0 +1,11 @@
+<?php
+	header('Access-Control-Allow-Origin: http://dayhmk.github.io');
+	require '../utils.php';
+	$text = file_get_contents("http://www2.newton.k12.ma.us/~qiao_mao/?OpenItemURL=S0CB7346A");
+	#$text = util_split('/<img src="\/Icons\/0" alt="" border="0" height="1" width="10">/i', $text, 1, 0);
+	#Table 10 is the newest one
+	$text = util_split('/<table[^>]*>/i', $text, 10, 0);
+	$text = util_split('/<\/table>/i', $text, 0, 0);
+	$text = util_split('/<div[^>]*>/i', $text, -1, 0);
+	echo strip_tags($text, '<br>');
+?>
