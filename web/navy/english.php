@@ -6,5 +6,5 @@
 	$text = util_split('/<table[^>]*>/i', $text, 1, 0);
 	$text = preg_split('/<tr[^>]*>/i', $text)[3];
 	$text = preg_split('/<td[^>]*>/i', $text)[1];
-	echo strip_tags($text, '<br>');
+	echo finalize($text);
 ?>

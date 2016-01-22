@@ -6,5 +6,5 @@
 	$text = util_split("/(Social Studies:|Social Studies|history:|history)/i", $text, 1, 1);
 	$text = util_split("/(english|math|science|history|Social Studies)/i", $text, 0, 0);
 	$text = util_split("/_______________/", $text, 0, 0);
-	echo strip_tags($text, '<br>');
+	echo finalize($text);
 ?>

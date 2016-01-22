@@ -7,5 +7,5 @@
 	$text = util_split('/<table[^>]*>/i', $text, 10, 0);
 	$text = util_split('/<\/table>/i', $text, 0, 0);
 	$text = util_split('/<div[^>]*>/i', $text, -1, 0);
-	echo strip_tags($text, '<br>');
+	echo finalize($text);
 ?>

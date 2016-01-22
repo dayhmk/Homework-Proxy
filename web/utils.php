@@ -42,4 +42,30 @@
 		$items=$xmlDoc->getElementsByTagName('feed')->item(0)->getElementsByTagName('entry');
 		return $items->item(0)->getElementsByTagName('content')->item(0)->childNodes->item(0)->nodeValue;
 	}
+
+	function trimStart($str, $prefix){
+		while (substr($str, 0, strlen($prefix)) == $prefix) {
+    			$str = trim(substr($str, strlen($prefix)));
+		} 
+		return $str;
+	}
+
+	function trimEnd($str, $prefix){
+		while (substr($str, strlen($str)-strlen($prefix), strlen($prefix)) == $prefix) {
+    			$str = trim(substr($str, 0, strlen($str)-strlen($prefix)));
+		} 
+		return $str;
+	}
+
+	function finalize($text){
+		//Remove all HTML tags EXCEPT <br>
+		$text = strip_tags($text, '<br>');
+		//Make </br>, <br />, or any variation of <br> into <br>
+		$text = preg_replace("/<\s*\/\s*br\s*>|<\s*br\s*\/\s*>/i","<br>",$text);
+		$text = trim($text);
+		$text = trimStart($text, "<br>");
+		$text = trimEnd($text, "<br>");
+		$text = trimStart($text, ":");
+		return $text;
+	}
 ?>

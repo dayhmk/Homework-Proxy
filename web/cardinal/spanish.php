@@ -15,5 +15,5 @@
 		$text = preg_split('/<td[^>]*>/i', $text)[$day+2];
 	}
 	$text = str_replace('due today:', '', $text);
-	echo strip_tags($text, '<br>');
+	echo finalize($text);
 ?>
