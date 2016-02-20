@@ -1,5 +1,5 @@
 <?php
-	header('Access-Control-Allow-Origin: http://dayhmk.github.io');
+	header('Access-Control-Allow-Origin: https://dayhmk.github.io');
 	require '../utils.php';
 	$text = util_rss("https://zappdragons.wordpress.com/feed", "homework");
 	$text = util_split("/(history:|history)/i", $text, 1, 1);

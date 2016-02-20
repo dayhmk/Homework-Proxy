@@ -1,5 +1,5 @@
 <?php
-	header('Access-Control-Allow-Origin: http://dayhmk.github.io');
+	header('Access-Control-Allow-Origin: https://dayhmk.github.io');
 	require '../utils.php';
 	date_default_timezone_set("America/New_York");
 	

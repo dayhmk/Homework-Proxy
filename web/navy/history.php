@@ -1,5 +1,5 @@
 <?php
-	header('Access-Control-Allow-Origin: http://dayhmk.github.io');
+	header('Access-Control-Allow-Origin: https://dayhmk.github.io');
 	require '../utils.php';
 	$text = file_get_contents("http://www2.newton.k12.ma.us/~kathy_maher/?OpenItemURL=S054D0D5C");
 	$text = util_split("/for Navy English and Social Studies/i", $text, 1, 1);

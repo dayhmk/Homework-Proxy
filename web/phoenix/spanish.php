@@ -1,5 +1,5 @@
 <?php
-	header('Access-Control-Allow-Origin: http://dayhmk.github.io');
+	header('Access-Control-Allow-Origin: https://dayhmk.github.io');
 	require '../utils.php';
 	$text = file_get_contents("http://www2.newton.k12.ma.us/~courtney_fournier/?OpenItemURL=S08BD3AB2");
 	$text = util_split('/(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i', $text, -1, 0);

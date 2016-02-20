@@ -1,5 +1,5 @@
 <?php
-	header('Access-Control-Allow-Origin: http://dayhmk.github.io');
+	header('Access-Control-Allow-Origin: https://dayhmk.github.io');
 	require '../utils.php';
 	$text = file_get_contents("http://www2.newton.k12.ma.us/~benjamin_gresser/?OpenItemURL=S0B6220A6");
 	$text = util_split("/<b>new<\/b>/i", $text, 1, 1);

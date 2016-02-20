@@ -1,5 +1,5 @@
 <?php
-	header('Access-Control-Allow-Origin: http://dayhmk.github.io');
+	header('Access-Control-Allow-Origin: https://dayhmk.github.io');
 	require '../utils.php';
 	$text = util_blogspot("http://fireteamhistory.blogspot.com/feeds/posts/default/", "homework");
 	$text = strip_tags($text, '<br>');
