@@ -6,5 +6,5 @@
 	$text = util_split('/<table[^>]*>/i', $text, 1, 0);
 	$text = preg_split('/<tr[^>]*>/i', $text)[3];
 	$text = preg_split('/<td[^>]*>/i', $text)[1];
-	echo finalize($text);
+	echo_json(finalize($text), "http://www2.newton.k12.ma.us/~courtney_fournier/?OpenItemURL=S08BD3AB2");
 ?>

@@ -5,5 +5,5 @@
 	$text = util_split("/(january|february|march|april|may|june|july|august|september|october|november|december)/i", $text, 1, 0);
 	$text = util_split("/(science:|science)/i", $text, 1, 1);
 	$text = util_split("/(english|math|science|history|Social Studies)/i", $text, 0, 0);
-	echo finalize($text, '<br>');
+	echo_json(finalize($text, '<br>'), "http://www2.newton.k12.ma.us/~millos/?OpenItemURL=S080F3395", "Millos Learning Center");
 ?>

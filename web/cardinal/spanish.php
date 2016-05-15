@@ -15,5 +15,5 @@
 		$text = preg_split('/<td[^>]*>/i', $text)[$day+2];
 	}
 	$text = str_replace('due today:', '', $text);
-	echo finalize($text);
+	echo_json(finalize($text), "http://www2.newton.k12.ma.us/~cassandra_spittel/?OpenItemURL=S0B3E6873");
 ?>

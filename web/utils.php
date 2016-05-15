@@ -59,7 +59,7 @@
 
 	function finalize($text){
 		//Remove all HTML tags EXCEPT <br>
-		$text = strip_tags($text, '<br>');
+		$text = strip_tags($text, '<br><ol><li>');
 		//Make </br>, <br />, or any variation of <br> into <br>
 		$text = preg_replace("/<\s*\/\s*br\s*>|<\s*br\s*\/\s*>/i","<br>",$text);
 		$text = trim($text);
@@ -68,4 +68,9 @@
 		$text = trimStart($text, ":");
 		return $text;
 	}
+
+	function echo_json($homework, $url, $websiteName="Teacher Website"){
+		echo json_encode(array('hw' => $homework, 'url' => $url, 'name' => $websiteName));
+	}
+
 ?>

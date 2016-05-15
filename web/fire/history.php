@@ -4,5 +4,5 @@
 	$text = util_blogspot("http://fireteamhistory.blogspot.com/feeds/posts/default/", "homework");
 	$text = strip_tags($text, '<br>');
 	$text = util_split("/(homework:|homework)/i", $text, 1, 1);
-	echo finalize($text, '<br>');
+	echo_json(finalize($text, '<br>'), "http://fireteamhistory.blogspot.com/");
 ?>

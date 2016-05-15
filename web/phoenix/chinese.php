@@ -7,5 +7,5 @@
 	$text = util_split('/<table[^>]*>/i', $text, 10, 0);
 	$text = util_split('/<\/table>/i', $text, 0, 0);
 	$text = util_split('/<div[^>]*>/i', $text, -1, 0);
-	echo finalize($text);
+	echo_json(finalize($text), "http://www2.newton.k12.ma.us/~qiao_mao/");
 ?>

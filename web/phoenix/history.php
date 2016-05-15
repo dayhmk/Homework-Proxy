@@ -6,5 +6,5 @@
 	$text = util_split("/(Social Studies:|Social Studies|history:|history)/i", $text, 1, 1);
 	$text = util_split("/(english|math|science|history|Social Studies)/i", $text, 0, 0);
 	$text = util_split("/_______________/", $text, 0, 0);
-	echo finalize($text);
+	echo_json(finalize($text), "http://www2.newton.k12.ma.us/~millos/?OpenItemURL=S07EAED39", "Millos Learning Center");
 ?>
