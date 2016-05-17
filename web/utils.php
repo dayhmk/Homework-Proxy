@@ -1,4 +1,13 @@
 <?php
+	// Constants
+	// See util_split. These are constants for $dir
+	define("SPLIT_AND_LOWER", -1);
+	define("SPLIT_AND_HIGHER", 1);
+	define("SPLIT_ONE",        0);
+	// Regex constants. These are just useful!
+	define("REGEX_CLASSES", "/(english|ela|math|science|history|social studies|learning center)/i");
+	define("REGEX_MONTHS", "/(january|february|march|april|may|june|july|august|september|october|november|december)/i");
+	define("REGEX_DAYS", "/(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/i");
 	
 	// An extended split function. $n is the index the split starts
 	// or ends at. If it is negative, it is added to the length
@@ -62,10 +71,9 @@
 		$text = strip_tags($text, '<br><ol><li>');
 		//Make </br>, <br />, or any variation of <br> into <br>
 		$text = preg_replace("/<\s*\/\s*br\s*>|<\s*br\s*\/\s*>/i","<br>",$text);
-		$text = trim($text);
+		$text = trim($text, chr(0xC2).chr(0xA0).chr(0x3A));
 		$text = trimStart($text, "<br>");
 		$text = trimEnd($text, "<br>");
-		$text = trimStart($text, ":");
 		return $text;
 	}
 
