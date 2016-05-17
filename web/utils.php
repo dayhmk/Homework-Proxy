@@ -71,7 +71,7 @@
 		$text = strip_tags($text, '<br><ol><li>');
 		//Make </br>, <br />, or any variation of <br> into <br>
 		$text = preg_replace("/<\s*\/\s*br\s*>|<\s*br\s*\/\s*>/i","<br>",$text);
-		$text = trim($text, chr(0xC2).chr(0xA0).chr(0x3A));
+		$text = trim($text, chr(0xC2).chr(0xA0).chr(0x3A).chr(0x0D).chr(0x0A));
 		$text = trimStart($text, "<br>");
 		$text = trimEnd($text, "<br>");
 		return $text;
