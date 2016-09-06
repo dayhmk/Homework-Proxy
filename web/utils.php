@@ -5,7 +5,7 @@
 	define("SPLIT_AND_HIGHER", 1);
 	define("SPLIT_ONE",        0);
 	// Regex constants. These are just useful!
-	define("REGEX_CLASSES", "/(english|ela|math|science|history|social studies|learning center)/i");
+	define("REGEX_CLASSES", "/(english|ela|math|science|history|social studies|learning center|academic support)/i");
 	define("REGEX_MONTHS", "/(january|february|march|april|may|june|july|august|september|october|november|december)/i");
 	define("REGEX_DAYS", "/(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/i");
 	

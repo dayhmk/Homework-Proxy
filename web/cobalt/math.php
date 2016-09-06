@@ -7,6 +7,7 @@
 	$text = util_split("/-----------------------/", $text, 0, 0);
 	$text = util_split("/(math:|math)/i", $text, 1, 1);
 	$text = util_split("/(english|math|science|history|social studies|learning center)/i", $text, 0, 0);
+	$text = util_split("/(top of page)/i", $text, 0, SPLIT_ONE);
 
 	echo_json(finalize($text), "http://www2.newton.k12.ma.us/~michael_moran/", "Mr.Moran's Website");
 ?>
